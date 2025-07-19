@@ -6,7 +6,9 @@ const {
     digitarEmail,
     digitarSenha,
     digitarEmailIncorreto,
-    digitarSenhaIncorreta
+    digitarSenhaIncorreta,
+    clicarBotaoCheck,
+    clicarLogin
 } = require('./page-login')
 
 test('Login com Sucesso', async ({ page }) => {
@@ -16,16 +18,16 @@ test('Login com Sucesso', async ({ page }) => {
 test('Login sem email', async ({ page }) => {
     await abrirSite(page)
     await digitarSenha(page)
-    await page.getByRole('checkbox', { name: 'Lembrar de mim' }).check()
-    await page.getByRole('button', { name: 'login' }).click()
+    await clicarBotaoCheck(page)
+    await clicarLogin(page)
     await expect(page.getByText('E-mail inválido.')).toBeVisible()
 })
 
 test('Login sem senha', async ({ page }) => {
     await abrirSite(page)
     await digitarEmail(page)
-    await page.getByRole('checkbox', { name: 'Lembrar de mim' }).check()
-    await page.getByRole('button', { name: 'login' }).click()
+    await clicarBotaoCheck(page)
+    await clicarLogin(page)
     await expect(page.getByText('Senha inválida.')).toBeVisible()
 })
 
@@ -33,8 +35,8 @@ test('Login com email incorreto', async ({ page }) => {
     await abrirSite(page)
     await digitarEmailIncorreto(page)
     await digitarSenha(page)
-    await page.getByRole('checkbox', { name: 'Lembrar de mim' }).check()
-    await page.getByRole('button', { name: 'login' }).click()
+    await clicarBotaoCheck(page)
+    await clicarLogin(page)
     await expect(page.getByText('E-mail inválido.')).toBeVisible()
 })
 
@@ -42,7 +44,7 @@ test('Login com senha incorreta', async ({ page }) => {
     await abrirSite(page)
     await digitarEmail(page)
     await digitarSenhaIncorreta(page)
-    await page.getByRole('checkbox', { name: 'Lembrar de mim' }).check()
-    await page.getByRole('button', { name: 'login' }).click()
+    await clicarBotaoCheck(page)
+    await clicarLogin(page)
     await expect(page.getByText('Senha inválida.')).toBeVisible()
 })

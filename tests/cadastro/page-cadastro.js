@@ -8,6 +8,9 @@ const password = faker.internet.password()
 const abrirSite = async (page) => {
     await page.goto('/register')
 }
+const clicarRegistrar = async (page) => {
+    
+}
 const digitarNome = async (page) => {
     await page.locator('#user').fill(name)
 }
