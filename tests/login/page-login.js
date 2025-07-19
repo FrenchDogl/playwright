@@ -1,8 +1,8 @@
 const { expect } = require('@playwright/test')
 import { faker } from '@faker-js/faker/locale/pt_BR'
 
-let email = faker.internet.email()
-let password = faker.internet.password()
+const email = faker.internet.email()
+const password = faker.internet.password()
 
 const fazerLogin = async (page) => {
     await page.goto('/login')
